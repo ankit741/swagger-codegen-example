@@ -1,0 +1,156 @@
+swagger: "2.0"
+info:
+  version: Login Service
+  title: Login Service
+  description: "The Authentication API"
+  license:
+    name: Ankit Singh Rawat.
+  contact:
+    name: Ankit Singh Rawat.
+    email: ankitrawat741@gmail.com
+basePath: /v1
+host: localhost:9090
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /login/auth:
+    post:
+      tags:
+        - login
+      operationId: login
+      description: |
+        This operation submits the user name and password. Upon successful submit, it returns the auth token text.
+      parameters:
+        - $ref: '#/parameters/locale'
+        - $ref: '#/parameters/channel'
+        - name: authInput
+          in: body
+          description: authenticate user name and password.
+          required: true
+          schema:
+            $ref: '#/definitions/AuthInput'
+      responses:
+        200:
+          description: |
+            *OK* - The order is submitted successfully.
+          schema:
+            $ref: "#/definitions/AuthOutput"
+        400:
+          $ref: '#/responses/400-BadRequest-inHeader'
+        401:
+          $ref: '#/responses/401-Unauthorized-inHeader'
+        404:
+          $ref: '#/responses/404-NotFound-inHeader'
+        500:
+          $ref: '#/responses/500-InternalServerError-inHeader'
+        default:
+          $ref: '#/responses/500-InternalServerError-inHeader'
+parameters:
+  channel:
+    name: channel
+    in: query
+    description: |
+      Sales Channel
+    required: false
+    type: string
+  locale:
+    name: Accept-Language
+    in: header
+    description: |
+      client's locale
+    type: string
+responses:
+  400-BadRequest-inHeader:
+    description: |
+      *Bad Request* - Indicates that client has sent malformed request.
+      Possibly missing mandatory query parameters, invalid value
+      in query parameters, validation exception etc.
+    headers:
+      err-errorcode:
+        type: string
+        description: |
+          the error code
+      err-errormessage:
+        type: string
+        description: |
+          the error message
+      err-erroruuid:
+        type: string
+        description: |
+          a uniqe identifier for the error (can help with fiding the error in the logs)
+  401-Unauthorized-inHeader:
+    description: |
+      *Unauthorized* - The server rejecteced the clients credentials.
+    headers:
+      err-errorcode:
+        type: string
+        description: |
+          the error code
+      err-errormessage:
+        type: string
+        description: |
+          the error message
+      err-erroruuid:
+        type: string
+        description: |
+          a uniqe identifier for the error (can help with fiding the error in the logs)
+  404-NotFound-inHeader:
+    description: |
+      *Not Found* - Indicates server has not found the requested URI.
+    headers:
+      err-errorcode:
+        type: string
+        description: |
+          the error code
+      err-errormessage:
+        type: string
+        description: |
+          the error message
+      err-erroruuid:
+        type: string
+        description: |
+          a uniqe identifier for the error (can help with fiding the error in the logs)
+  500-InternalServerError-inHeader:
+    description: |
+      *Internal Server Error* - server failed in handling the
+      client request.
+    headers:
+      err-errorcode:
+        type: string
+        description: |
+          the error code
+      err-errormessage:
+        type: string
+        description: |
+          the error message
+      err-erroruuid:
+        type: string
+        description: |
+          A uniqe identifier for the error (can help with fiding the error in the logs)
+definitions:
+  AuthOutput:
+    description: |
+      Authentication output
+    type: object
+    properties:
+      authToken:
+        description: |
+          the authentication token
+        type: string
+  AuthInput:
+    description: |
+     input to hold user name and password.
+    type: object
+    properties:
+      userId:
+        description: |
+          the user id.
+        type: string
+      password:
+        description: |
+          the password
+        type: string
