@@ -17,9 +17,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <chat.yaml.file>${project.basedir}/src/main/resources/swagger/chat-service.yml</chat.yaml.file>
         <auth.yaml.file>${project.basedir}/src/main/resources/swagger/auth-service.yml</auth.yaml.file>
-        <knowledge.yaml.file>${project.basedir}/src/main/resources/swagger/knowledge-service.yml</knowledge.yaml.file>
         <generated-sources-path>${project.build.directory}/generated-sources</generated-sources-path>
         <generated-sources-java-path>main/java</generated-sources-java-path>
         <swagger.codegen.version>2.3.1</swagger.codegen.version>
