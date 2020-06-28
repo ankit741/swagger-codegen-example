@@ -8,6 +8,3 @@ Swagger Codegen can simplify your build process by generating server stubs and c
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
-# License
-
-Licensed under Apache 2.0. Please see [LICENSE](LICENSE) for details.
