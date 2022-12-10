@@ -21,7 +21,7 @@
         <generated-sources-path>${project.build.directory}/generated-sources</generated-sources-path>
         <generated-sources-java-path>main/java</generated-sources-java-path>
         <swagger.codegen.version>2.3.1</swagger.codegen.version>
-        <spring.web.version>5.2.0.RELEASE</spring.web.version>
+        <spring.web.version>6.0.0</spring.web.version>
         <springfox-version>2.6.1</springfox-version>
         <swagger-core-version>1.5.10</swagger-core-version>
 	<jackson.version>2.10.0</jackson.version>
